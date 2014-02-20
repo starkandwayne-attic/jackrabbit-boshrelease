@@ -1,0 +1,30 @@
+meta:
+  environment: ~
+
+update:
+  canaries: 1
+  max_in_flight: 50
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+  serial: false
+
+jobs:
+  - name: apache_jackrabbit_leader_z1
+    template: apache-jackrabbit
+    instances: 0
+    resource_pool: small_z1
+    networks: (( merge ))
+  - name: apache_jackrabbit_z1
+    template: apache-jackrabbit
+    instances: 0
+    resource_pool: small_z1
+    networks: (( merge ))
+    update:
+      canaries: 10
+    properties:
+      apache_jackrabbit:
+        leader_address: (( merge ))
+
+networks: (( merge ))
+
+properties: {}
