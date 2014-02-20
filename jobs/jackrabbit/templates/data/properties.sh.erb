@@ -9,5 +9,5 @@ export JOB_INDEX=<%= index %>
 # full job name, like redis/0 or webapp/3
 export JOB_FULL="$NAME/$JOB_INDEX"
 
-export JACKRABBIT_PORT=${PORT:-8080}
+export JACKRABBIT_PORT=<%= p("jackrabbit.port") %>
 export JACKRABBIT_HOST=0.0.0.0

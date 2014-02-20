@@ -10,3 +10,7 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/repository.xml.erb: config/repository.xml
+properties:
+  jackrabbit.port:
+    description: HTTP port
+    default: 8080

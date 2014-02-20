@@ -14,6 +14,9 @@ jobs:
     instances: 0
     resource_pool: small_z1
     networks: (( merge ))
+    properties:
+      jackrabbit: ~
+
 
 networks: (( merge ))
 
