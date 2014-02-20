@@ -1,0 +1,26 @@
+set -e -x
+
+# http://wiki.apache.org/cassandra/GettingStarted
+# Cassandra requires the most stable version of Java 7 you can deploy, preferably the Oracle/Sun JVM.
+# Cassandra also runs on OpenJDK and the IBM JVM. Because Cassandra requires Java 7, it will NOT run on JRockit.
+
+# http://www.datastax.com/docs/1.0/install/install_jre#install-jna-lts
+# Installing JNA
+
+# http://www.datastax.com/docs/datastax_enterprise2.1/install/install_deb_pkg
+# Installing on Ubuntu
+# Oracle Java SE Runtime Environment (JRE) 6. Java 7 is not recommended.
+# Java Native Access (JNA) is required for production installations. See Installing JNA.
+# Note: If you are using Ubuntu 10.04 LTS, you need to update to JNA 3.4, as described in Install JNA on Ubuntu 10.04.
+
+# http://www.datastax.com/docs/datastax_enterprise2.1/install/install_rpm_pkg
+# Installing on CentOS
+# Oracle Java SE Runtime Environment (JRE) 6. Java 7 is not recommended.
+
+
+cd ${BOSH_INSTALL_TARGET}
+tar zxvf ${BOSH_COMPILE_TARGET}/java/openjdk-1.6.0_27.tar.gz
+if [[ $? != 0 ]] ; then
+  echo "Cannot unpack JDK"
+  exit 1
+fi
