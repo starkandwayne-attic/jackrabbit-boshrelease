@@ -1,5 +1,6 @@
 meta:
   environment: ~
+  port: ~
 
 update:
   canaries: 1
@@ -15,7 +16,8 @@ jobs:
     resource_pool: small_z1
     networks: (( merge ))
     properties:
-      jackrabbit: ~
+      jackrabbit:
+        port: (( meta.port ))
 
 
 networks: (( merge ))

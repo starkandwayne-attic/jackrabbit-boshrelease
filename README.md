@@ -25,6 +25,33 @@ templates/make_manifest aws-ec2
 bosh -n deploy
 ```
 
+For AWS VPC, to create a single VM you first need to create an additional configuration file containing your subnet ID, etc. Assume its called `my-network.yml`:
+
+``` yaml
+meta:
+  subnet_id: subnet-5a20091c
+  port: 5000
+  security_groups:
+  - webapp-vpc-cec034ab
+
+jobs:
+  - name: jackrabbit_z1
+    networks:
+      - name: floating
+        static_ips:
+        - 54.84.122.115
+```
+
+Security group `webapp-vpc-cec034ab` would need to have ports 22 and 5000 open.
+
+To generate the deployment file and deploy you need to include your config file above:
+
+```
+templates/make_manifest aws-ec2 my-network.yml
+bosh -n deploy
+```
+
+
 ### Override security groups
 
 For AWS & Openstack, the default deployment assumes there is a `default` security group. If you wish to use a different security group(s) then you can pass in additional configuration when running `make_manifest` above.

@@ -2,7 +2,6 @@ meta:
   environment: (( merge ))
   dns_root: (( merge ))
   security_groups: (( merge ))
-  network_name: (( merge ))
 
   stemcell:
     name: bosh-aws-xen-ubuntu
@@ -12,7 +11,7 @@ jobs:
   - name: jackrabbit_z1
     instances: 1
     networks:
-      - name: (( meta.network_name ))
+      - name: jackrabbit1
 
 compilation:
   cloud_properties:
@@ -27,7 +26,7 @@ networks:
   - name: floating
     type: vip
     cloud_properties: {}
-  - name: (( meta.network_name ))
+  - name: jackrabbit1
     type: dynamic
     cloud_properties:
       security_groups: (( meta.security_groups ))

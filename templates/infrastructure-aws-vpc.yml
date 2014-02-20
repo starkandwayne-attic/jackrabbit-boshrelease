@@ -1,0 +1,47 @@
+meta:
+  environment: (( merge ))
+  security_groups: (( merge ))
+  subnet_id: (( merge ))
+
+  stemcell:
+    name: bosh-aws-xen-ubuntu
+    version: latest
+
+jobs:
+  - name: jackrabbit_z1
+    instances: 1
+    networks:
+      - name: jackrabbit1
+        static_ips: ~
+        default: [dns, gateway]
+      - name: floating
+        static_ips: ~
+
+compilation:
+  cloud_properties:
+    instance_type: m1.small
+
+resource_pools:
+  - name: small_z1
+    cloud_properties:
+      instance_type: m1.small
+
+networks:
+  - name: floating
+    type: vip
+    cloud_properties: {}
+  - name: jackrabbit1
+    type: manual
+    subnets:
+      - range: 10.10.1.0/24
+        name: default_unused
+        reserved:
+          - 10.10.1.2 - 10.10.1.9
+        static:
+          - 10.10.1.10 - 10.10.1.100
+        gateway: 10.10.1.1
+        dns:
+          - 10.10.1.2 # amazon has only 1 DNS server for the whole VPC at x.x.0.2
+        cloud_properties:
+          security_groups: (( meta.security_groups ))
+          subnet: (( meta.subnet_id ))
