@@ -13,10 +13,6 @@ case $1 in
   start)
     pid_guard $PIDFILE $JOB_NAME
 
-    mkdir -p /var/vcap/sys/jackrabbit/log
-    mkdir -p /var/vcap/sys/jackrabbit/tmp
-    chown vcap:vcap -R /var/vcap/sys/jackrabbit
-
     # Java memory allocation
     MEMORY="-XX:MaxPermSize=128m \
         -Xmx512M \
