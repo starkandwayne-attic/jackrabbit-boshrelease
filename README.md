@@ -47,7 +47,7 @@ Security group `webapp-vpc-cec034ab` would need to have ports 22 and 5000 open.
 To generate the deployment file and deploy you need to include your config file above:
 
 ```
-templates/make_manifest aws-ec2 my-network.yml
+templates/make_manifest aws-vpc my-network.yml
 bosh -n deploy
 ```
 
