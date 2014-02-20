@@ -41,7 +41,7 @@ networks:
           - 10.10.1.10 - 10.10.1.100
         gateway: 10.10.1.1
         dns:
-          - 10.10.1.2 # amazon has only 1 DNS server for the whole VPC at x.x.0.2
+          - 10.10.0.2 # amazon has only 1 DNS server for the whole VPC at x.x.0.2
         cloud_properties:
           security_groups: (( meta.security_groups ))
           subnet: (( meta.subnet_id ))
