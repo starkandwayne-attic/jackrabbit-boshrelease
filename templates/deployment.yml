@@ -16,7 +16,7 @@ properties: (( merge ))
 
 compilation:
   workers: 6
-  network: apache_jackrabbit1
+  network: jackrabbit1
   reuse_compilation_vms: true
   cloud_properties: (( merge ))
 
@@ -29,7 +29,7 @@ update:
 
 resource_pools:
   - name: small_z1
-    network: apache_jackrabbit1
+    network: jackrabbit1
     size: (( auto ))
     stemcell: (( meta.stemcell ))
     cloud_properties: (( merge ))

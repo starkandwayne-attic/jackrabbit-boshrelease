@@ -4,9 +4,8 @@ set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
 # Setup env vars and folders for the webapp_ctl script
-source /var/vcap/jobs/apache_jackrabbit/helpers/ctl_setup.sh 'apache_jackrabbit'
+source /var/vcap/jobs/jackrabbit/helpers/ctl_setup.sh 'jackrabbit'
 
-export PORT=${PORT:-5000}
 export LANG=en_US.UTF-8
 
 case $1 in
@@ -14,8 +13,14 @@ case $1 in
   start)
     pid_guard $PIDFILE $JOB_NAME
 
-    # TODO: Run some process
-    exec chpst -u vcap:vcap TODO \
+    mkdir -p /var/vcap/data/backup/jackrabbit
+
+    exec chpst -u vcap:vcap java \
+      -jar /var/vcap/packages/jackrabbit/lib/jackrabbit-standalone-2.6.5.jar \
+      -c $JOB_DIR/config/repository.xml \
+      -p $PORT \
+      -r /var/vcap/store/jackrabbit \
+      -b -R /var/vcap/data/backup/jackrabbit \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log
 
@@ -28,7 +33,7 @@ case $1 in
 
     ;;
   *)
-    echo "Usage: apache_jackrabbit_ctl {start|stop}"
+    echo "Usage: jackrabbit_ctl {start|stop}"
 
     ;;
 

@@ -1,4 +1,4 @@
-# BOSH Release for apache-jackrabbit
+# BOSH Release for jackrabbit
 
 ## Usage
 
@@ -6,9 +6,9 @@ To use this bosh release, first upload it to your bosh:
 
 ```
 bosh target BOSH_HOST
-git clone https://github.com/cloudfoundry-community/apache-jackrabbit-boshrelease.git
-cd apache-jackrabbit-boshrelease
-bosh upload release releases/apache-jackrabbit-1.yml
+git clone https://github.com/cloudfoundry-community/jackrabbit-boshrelease.git
+cd jackrabbit-boshrelease
+bosh upload release releases/jackrabbit-1.yml
 ```
 
 For [bosh-lite](https://github.com/cloudfoundry/bosh-lite), you can quickly create a deployment manifest & deploy a cluster:
@@ -34,14 +34,14 @@ Create a file `my-networking.yml`:
 ``` yaml
 ---
 networks:
-  - name: apache-jackrabbit1
+  - name: home/vagrantjackrabbit1
     type: dynamic
     cloud_properties:
       security_groups:
-        - apache-jackrabbit
+        - jackrabbit
 ```
 
-Where `- apache-jackrabbit` means you wish to use an existing security group called `apache-jackrabbit`.
+Where `- jackrabbit` means you wish to use an existing security group called `jackrabbit`.
 
 You now suffix this file path to the `make_manifest` command:
 

@@ -9,17 +9,10 @@ meta:
     version: latest
 
 jobs:
-  - name: apache_jackrabbit_leader_z1
+  - name: jackrabbit_z1
     instances: 1
     networks:
       - name: (( meta.network_name ))
-  - name: apache_jackrabbit_z1
-    instances: 2
-    networks:
-      - name: (( meta.network_name ))
-    properties:
-      apache_jackrabbit:
-        leader_address: (( "0.apache-jackrabbit-leader-z1.apache-jackrabbit1." meta.environment "." meta.dns_root ))
 
 compilation:
   cloud_properties:

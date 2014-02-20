@@ -2,12 +2,12 @@
 meta:
   environment: NAME
   dns_root: microbosh
-  network_name: apache_jackrabbit1
+  network_name: jackrabbit1
   security_groups:
-    - apache_jackrabbit
+    - jackrabbit
 
 director_uuid: PLACEHOLDER-DIRECTOR-UUID
 
 releases:
-  - name: apache-jackrabbit
+  - name: jackrabbit
     version: latest

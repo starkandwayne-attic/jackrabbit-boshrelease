@@ -1,5 +1,0 @@
-check process apache_jackrabbit
-  with pidfile /var/vcap/sys/run/apache_jackrabbit/apache_jackrabbit.pid
-  start program "/var/vcap/jobs/apache_jackrabbit/bin/monit_debugger apache_jackrabbit_ctl '/var/vcap/jobs/apache_jackrabbit/bin/apache_jackrabbit_ctl start'"
-  stop program "/var/vcap/jobs/apache_jackrabbit/bin/monit_debugger apache_jackrabbit_ctl '/var/vcap/jobs/apache_jackrabbit/bin/apache_jackrabbit_ctl stop'"
-  group vcap

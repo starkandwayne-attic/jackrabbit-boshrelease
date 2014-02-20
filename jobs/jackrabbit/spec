@@ -1,0 +1,12 @@
+---
+name: jackrabbit
+packages:
+- java6
+- jackrabbit
+templates:
+  bin/jackrabbit_ctl: bin/jackrabbit_ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/repository.xml.erb: config/repository.xml

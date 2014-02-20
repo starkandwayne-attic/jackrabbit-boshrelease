@@ -1,0 +1,5 @@
+---
+name: jackrabbit
+dependencies: []
+files:
+- jackrabbit/jackrabbit-standalone-2.6.5.jar
