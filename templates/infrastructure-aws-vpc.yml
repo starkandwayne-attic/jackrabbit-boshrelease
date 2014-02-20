@@ -2,6 +2,7 @@ meta:
   environment: (( merge ))
   security_groups: (( merge ))
   subnet_id: (( merge ))
+  cidr_prefix: 10.10.1
 
   stemcell:
     name: bosh-aws-xen-ubuntu
@@ -12,7 +13,7 @@ jobs:
     instances: 1
     networks:
       - name: jackrabbit1
-        static_ips: ~
+        static_ips: (( static_ips(0) ))
         default: [dns, gateway]
       - name: floating
         static_ips: ~
