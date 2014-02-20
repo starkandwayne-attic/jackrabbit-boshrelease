@@ -13,19 +13,30 @@ case $1 in
   start)
     pid_guard $PIDFILE $JOB_NAME
 
-    mkdir -p /var/vcap/data/backup/jackrabbit
+    mkdir -p /var/vcap/sys/jackrabbit/log
+    mkdir -p /var/vcap/sys/jackrabbit/tmp
+    chown vcap:vcap -R /var/vcap/sys/jackrabbit
 
-    exec chpst -u vcap:vcap java \
-      -jar /var/vcap/packages/jackrabbit/lib/jackrabbit-standalone-2.6.5.jar \
+    # Java memory allocation
+    MEMORY="-XX:MaxPermSize=128m \
+        -Xmx512M \
+        -Xms128M"
+
+    JACKRABBIT_JAR=/var/vcap/packages/jackrabbit/lib/jackrabbit-standalone-2.6.5.jar
+
+    echo $$ > $PIDFILE
+    chown vcap:vcap $PIDFILE
+
+    exec chpst -u vcap:vcap java $MEMORY \
+      -Dpidfile=$PIDFILE   \
+      -jar $JACKRABBIT_JAR \
+      -h $JACKRABBIT_HOST  \
+      -p $JACKRABBIT_PORT  \
+      --repo /var/vcap/store/jackrabbit \
       -c $JOB_DIR/config/repository.xml \
-      -p $PORT \
-      -r /var/vcap/store/jackrabbit \
-      -b -R /var/vcap/data/backup/jackrabbit \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log
 
-    # store pid in $PIDFILE
-    echo $! > $PIDFILE
     ;;
 
   stop)
