@@ -1,1 +1,11 @@
---- {}
+---
+jackrabbit/jackrabbit-standalone-2.6.5.jar:
+  object_id: 7d76d3a9-a414-49b2-b3eb-b68dd5f804c2
+  sha: !binary |-
+    NDE1YWVlMmIyMmM3OWJlMmVjNzliZjY0Yzc3NjAyYjgzOWY2ZDZkNw==
+  size: 66681917
+java/openjdk-1.6.0_27.tar.gz:
+  object_id: ea01194a-341b-44f4-836c-6243f54c4177
+  sha: !binary |-
+    YTQ1YjZmODliYTU0ZDIzMGNiNDc5OTJiZDgxNzdkMjExZjY0YmQ5Mw==
+  size: 28917046
