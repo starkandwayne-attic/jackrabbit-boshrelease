@@ -8,7 +8,7 @@ template_prefix="jackrabbit"
 if [ "$infrastructure" != "aws-ec2" ] && \
     [ "$infrastructure" != "aws-vpc" ] && \
     [ "$infrastructure" != "warden" ] ; then
-  echo "usage: ./make_manifest <aws-ec2|warden>"
+  echo "usage: ./make_manifest <aws-ec2|aws-vpc|warden>"
   exit 1
 fi
 

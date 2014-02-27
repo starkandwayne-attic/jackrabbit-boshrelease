@@ -1,0 +1,12 @@
+meta:
+  subnet_id: subnet-884c67ce
+  port: 8080
+  security_groups:
+  - jackrabbit-vpc-9815e3fd
+
+jobs:
+  - name: jackrabbit_z1
+    networks:
+      - name: floating
+        static_ips:
+        - 54.84.134.203
